@@ -1,4 +1,5 @@
-package BasicBinaryTree;
+
+package com.BasicBinaryTree;
 
 public class Program {
 
@@ -8,9 +9,8 @@ public class Program {
         String questionThree = "attend lectures";
         String questionFour = "make exercises";
 
-        Tree<String> tree = new Tree<>();
+        Tree<String> root = new Tree<>();
 
-        tree.add(questionOne);
-        tree.add(questionTwo);
+
     }
 }

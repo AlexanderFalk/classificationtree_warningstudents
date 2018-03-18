@@ -1,4 +1,4 @@
-package BasicBinaryTree;
+package com.BasicBinaryTree;
 
 public class Tree<T extends Comparable<T>> {
     private Node root;
@@ -147,44 +147,88 @@ public class Tree<T extends Comparable<T>> {
         // that every value is unique or already exists
     }
 
+
+    public void addRoot(T item) {
+        this.root = root;
+        this.size++;
+    }
+
+    public void addChildRight(Node parent, Node child, T item) {
+        Node node = new Node(item);
+
+        // If this is an empty tree, set it as root
+        if (root == null) {
+            this.root = node;
+            System.out.println("Set Root: " + node.getItem());
+            this.size++;
+        }
+        // Otherwise we need to insert the item into the tree using the binary tree insert algorithm
+        else {
+            parent.setRight(child);
+            child.setParent(parent);
+            this.size++;
+        }
+    }
+
+    public void addChildLeft(Node parent, Node child, T item) {
+        Node node = new Node(item);
+
+        // If this is an empty tree, set it as root
+        if (root == null) {
+            this.root = node;
+            System.out.println("Set Root: " + node.getItem());
+            this.size++;
+        }
+        // Otherwise we need to insert the item into the tree using the binary tree insert algorithm
+        else {
+            parent.setLeft(child);
+            child.setParent(parent);
+            this.size++;
+        }
+    }
+
+    public void ins(Node parent, Node child) {
+
+    }
+
     private class Node {
         private Node left;
         private Node right;
         private Node parent;
         private T item;
 
-        public Node(T item) {
+        Node(T item) {
             this.left = null;
             this.right = null;
             this.parent = null;
             this.item = item;
         }
 
-        public Node getLeft() {
+        Node getLeft() {
             return left;
         }
 
-        public void setLeft(Node left) {
+        void setLeft(Node left) {
             this.left = left;
         }
 
-        public Node getRight() {
+        Node getRight() {
             return right;
         }
 
-        public void setRight(Node right) {
+        void setRight(Node right) {
             this.right = right;
         }
 
-        public Node getParent() {
+        Node getParent() {
             return parent;
         }
 
-        public void setParent(Node parent) {
+        void setParent(Node parent) {
             this.parent = parent;
         }
 
-        public T getItem() {
+        T getItem() {
             return item;
         }
 
