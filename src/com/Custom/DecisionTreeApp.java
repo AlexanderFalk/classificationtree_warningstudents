@@ -3,33 +3,22 @@ package com.Custom;// DECISION TREE  APPLICATION
 // Thursday 15 August 2002
 // Department of Computer Science, University of Liverpool
 
+import com.OnMyOwn.ClassificationTree;
+
 import java.io.*;
 
 class DecisionTreeApp {
 
-    /* ------------------------------- */
-    /*                                 */
-    /*              FIELDS             */
-    /*                                 */
-    /* ------------------------------- */
-
-    static BufferedReader keyboardInput = new
+    private static BufferedReader keyboardInput = new
             BufferedReader(new InputStreamReader(System.in));
-    static DecisionTree newTree;
+    private static ClassificationTree newTree;
 
-    /* --------------------------------- */
-    /*                                   */
-    /*               METHODS             */
-    /*                                   */
-    /* --------------------------------- */
-
-    /* MAIN */
 
     public static void main(String[] args) throws IOException {
 
         // Create instance of class DecisionTree
 
-        newTree = new DecisionTree();
+        newTree = new ClassificationTree();
 
         // Generate tree
 
@@ -65,15 +54,15 @@ class DecisionTreeApp {
         newTree.addYesNode(3,12,"Made exercises?");
         newTree.addNoNode(3,13,"You could easily fail the exam");
         newTree.addYesNode(12,14,"You should be able to pass the exam");
-        newTree.addYesNode(12,15,"You should be able to pass the exam");
+        newTree.addNoNode(12,15,"You should be able to pass the exam");
     }
 
     /* QUERY TREE */
 
-    static void queryTree() throws IOException {
+    private static void queryTree() throws IOException {
         System.out.println("\nQUERY DECISION TREE");
         System.out.println("===================");
-        newTree.queryBinTree();
+        newTree.queryTree();
 
         // Option to exit
 
@@ -82,10 +71,10 @@ class DecisionTreeApp {
 
     /* OPTION TO EXIT PROGRAM */
 
-    static void optionToExit() throws IOException {
+    private static void optionToExit() throws IOException {
         System.out.println("Exit? (enter \"Yes\" or \"No\")");
         String answer = keyboardInput.readLine();
-        if (answer.equals("Yes")) return;
+        if (answer.equalsIgnoreCase("Yes")) return;
         else {
             if (answer.equals("No")) queryTree();
             else {
